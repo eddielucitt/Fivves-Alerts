@@ -1,0 +1,485 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+
+        "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+	
+	<script language="javascript" src="scripts/jquery.js"></script> 
+	 <script language="javascript" src="scripts/jscolor/jscolor.js"></script> 
+
+	<script language="javascript" src="alert-variables.js"></script> 
+	<script language="javascript" src="alerts.js"></script> 
+	
+	
+	<script language="javascript" src="scripts/jquery-ui/jquery-ui.js"></script> 
+	<script language="javascript" src="scripts/jquery.lettering.js"></script> 
+	
+	
+	
+
+	
+	<style>
+	h1 span {
+
+	  height: 400px;
+
+	  width: 20px;
+	  left: 0;
+	  top: 0;
+	 
+	  -webkit-transform-origin: bottom center;
+	  -moz-transform-origin: bottom center;
+	  -ms-transform-origin: bottom center;
+	  -o-transform-origin: bottom center;
+	  transform-origin: bottom center;
+	  
+	}
+	</style>
+	
+	<link rel="stylesheet" type="text/css" href="alerts.css"> 
+	<link rel="stylesheet" type="text/css" href="scripts/animate.css"> 
+	<link rel="stylesheet" type="text/css" href="scripts/animations.css"> 
+	<link rel="stylesheet" type="text/css" href="scripts/jquery-ui/jquery-ui.css"> 
+	
+
+	<head>
+	
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<title>Custom Alerts</title>
+
+	</head>
+	
+	
+	<!-- *****
+	=========================================================================================================================================================================
+	=========================================================================================================================================================================
+	=========================================================================================================================================================================
+	============= -->
+	
+	
+	<!-- If you want to change the background color of the page, modify the color inside bgcolor="YOURCOLORHERE", and make the next line just look like <body bgcolor="color">, no arrows/dashes/exlamation
+	<!-- <body bgcolor="#00FF00"> -->
+	
+
+		
+	
+	<!-- =============
+	=========================================================================================================================================================================
+	=========================================================================================================================================================================
+	=========================================================================================================================================================================
+	****** -->
+	
+
+	<img id="alert-image" src="images/blank.gif" />
+	
+	
+	<video id ="alert-video" width="320" height="240" loop ="on">
+	  <source src="images/randomw.webm" type="video/webm">
+	Your browser does not support the video tag.
+	</video>
+	
+
+	<!-- 	<div id="new-subscriber">
+			
+			This <span id="follower">isn't</span><br>working
+		</div> -->
+	<h1 id ="new-subscriber">Not working, send halp pls</h1>
+	
+	<!-- <div id="information">
+		Information:
+		
+		
+	</div> -->
+	<br>
+	<div id = "fontColorForm">
+	
+	
+	
+
+	
+	
+
+
+	<button id= "testAlert" class ="customButton2" type="button" onclick="playTestAlert()" >Play test alert!</button>
+	
+
+	
+	
+	<button id= "changeValues" class ="customButton2" type="button" onclick="handle()" >Apply values</button>
+	
+	
+	
+	<button id= "generator" class ="customButton" type="button" onclick="generateCode()" >Generate the code!</button>
+	<br><br> <h4 style="display:inline" >Alerts Queued: </h4><p id = "alertMessage" style="display:inline">0</p>
+	
+	
+	
+	
+	<br>
+	<div class="tabs">
+		<ul class="tab-links">
+			<li class="active"><a href="#tab1">Basic</a></li>
+			<li><a href="#tab2">Image</a></li>
+			<li><a href="#tab3">Audio</a></li>
+			<li><a href="#tab4">Alert</a></li>
+			<li><a href="#tab5">Fonts</a></li>
+			<li><a href="#tab6">Fontsp2</a><li>
+		</ul>
+
+		<div class="tab-content">
+			<div id="tab1" class="tab active">
+					Twitch Channel:<br>
+					<input id = "twitchChannel" type="text" value = "default" onkeypress="handle()">
+					<br>
+					
+					Subscriber Key:<br>
+					<input id = "accessToken" type="text" value = "default" onkeypress="handle()">
+					<h4 id="keyValid" style="display:inline"></h4><br>
+					<button id= "keyGet" type="button" onclick="getKey()" >Get Key</button>
+					<br>
+					
+					<h4>File Folder:</h4>
+					<input id = "folderName" type="text" value = "default" onkeypress="handle()">
+					<br>
+					
+					Add files:<br>
+					<input type="file" id="fileSelector" name="uploads[]" multiple>
+					<br><br>
+					<button id= "imageReset" type="button" onclick="imageReset()" >Clear Image List</button>
+					<button id= "audioReset" type="button" onclick="audioReset()" >Clear Audio List</button>
+					<br>
+			</div>
+
+
+			<div id="tab2" class="tab">
+				Image Z Index:<br>
+				<select id ="imageZIndex" onchange ="handle()">
+				  <option value="0">0</option>
+				  <option value="1">1</option>
+				</select><br>
+				
+				Image Width:<br>
+				<input id = "imageWidth" class ="spins" type="text" value = "default" onkeypress="handle()">
+				<br>
+				Image Height:<br>
+				<input id = "imageHeight" class ="spins" type="text" value = "default" onkeypress="handle()">
+				<br>
+				Image Opacity: (buggy) <br>
+				<input id = "imageOpacity" class ="spins2" type="text" value = "default" onkeypress="handle()">
+				<br>
+				Image Border Color:<br>
+				<input id = "imageBorderColor" type="text" value = "default" onkeypress="handle()" class ="color {hash:true,adjust:false,pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black', onImmediateChange:handle }" onchange ="handle()">
+				<br>
+				Image Border Size:<br>
+				<input id = "imageBorderSize" class ="spins" type="text" value = "default" onkeypress="handle()">
+				<br>
+				Image Border Style:<br>
+				<select id ="imageBorderStyle" onchange ="handle()">
+				  <option value="none">None</option>
+				  <option value="hidden">Hidden</option>
+				  <option value="dotted">Dotted</option>
+				  <option value="dashed">Dashed</option>
+				  <option value="solid">Solid</option>
+				  <option value="double">Double</option>
+				  <option value="groove">Groove</option>
+				  <option value="ridge">Ridge</option>
+				  <option value="inset">Inset</option>
+				  <option value="outset">Outset</option>
+				  <option value="initial">Initial</option>
+				  <option value="inherit">Inherit</option>
+				</select><br>
+			</div>
+
+			<div id="tab3" class="tab">
+				
+				
+				Alert Volume: (0.0 to 1.0) (updates on next alert)<br>
+				<input id = "alertVolume" class ="spins2" type="text" value = "default" onkeypress="handle()">
+				<br>
+				TTS Enabled: (updates on next alert)<br>
+				<select id ="ttsE" onchange ="handle()">
+				  <option value="true">True</option>
+				  <option value="false">False</option>
+				</select><br>
+				TTS Language: (updates on next alert)<br>
+				<input id = "ttsL" class ="autocompleteLanguage" type="text" value = "default" onkeypress="handle()" onchange="handle()" >
+				<br>
+			</div>
+			
+			
+			<div id="tab4" class="tab">	
+				Alert Amount to add to Queue:<br>
+				<input id = "alertQueue" class ="spins" type="text" value = "1" onkeypress="handle()">
+				<br>
+				Alert Length in ms: (1000ms = 1s) (updates on next alert) <br>
+				<input id = "alertLength" class ="spins" type="text" value = "1" onkeypress="handle()">
+				<br>
+				Check for updates every __ milliseconds: (updates on save->restart) <br>
+				<input id = "requestTime" class ="spins" type="text" value = "1" onkeypress="handle()">
+				<br>
+				Check for queued alerts every __ milliseconds(updates on save->restart) <br>
+				<input id = "alertCheckTime" class ="spins" type="text" value = "1" onkeypress="handle()">
+				<br>
+				Text before follower name: (updates on next alert)<br>
+				<input id = "preM" type="text" value = "default" onkeypress="handle()">
+				<br>
+				Text after follower name: (updates on next alert)<br>
+				<input id = "postM" type="text" value = "default" onkeypress="handle()">
+				<br>
+			</div>
+			
+			<div id="tab5" class="tab">
+				Font Type:<br>
+				<input id = "fontType" class ="autocompleteFont" type="text" value = "default" onkeypress="handle()" onchange="handle()" >
+				<br>
+				Text Max Width :<br>
+				<input id = "fontWidth" class ="spins" type="text" value = "default" onkeypress="handle()">
+				<br>
+				Text Line Height:<br>
+				<input id = "fontHeight" class ="spins" type="text" value = "default" onkeypress="handle()">
+				<br>
+				Normal Text Size:<br>
+				<input id = "fontSize" class ="spins" type="text" value = "default" onkeypress="handle()">
+				<br>
+				Normal Text Color:<br>
+				<input id = "fontColorBox" type="text" onkeypress="handle()" value="rgba(0,0,0,1)" class ="color {hash:true,adjust:false,pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black', onImmediateChange:handle }" onchange ="handle()">
+				<br>
+				Font Fade Color:<br>
+				<input id = "fontFadeColor" type="text" value = "default" onkeypress="handle()" class ="color {hash:true,adjust:false,pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black', onImmediateChange:handle }" onchange ="handle()">
+				<br>
+				Follower Text Color:<br>
+				<input id = "ffc" type="text" value = "default" onkeypress="handle()" class ="color {hash:true,adjust:false,pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black', onImmediateChange:handle }" onchange ="handle()">
+				<br>
+				Follower Text Size:<br>
+				<input id = "ffs" class ="spins" type="text" value = "default" onkeypress="handle()">
+				<br>
+				Text Outline Color:<br>
+				<input id = "fontOutlineColor" type="text" value = "default" onkeypress="handle()" class ="color {hash:true,adjust:false,pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black', onImmediateChange:handle }" onchange ="handle()" >
+				<br>
+				Text Outline Size:<br>
+				<input id = "fontOutlineSize" class ="spins" type="text" value = "default" onkeypress="handle()">
+				<br>
+				Text Shadow Color:<br>
+				<input id = "ssc" type="text" value = "default" onkeypress="handle()" class ="color {hash:true,adjust:false,pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black', onImmediateChange:handle }" onchange ="handle()">
+				<br>
+				Text Shadow Size X:<br>
+				<input id = "sssx" class ="spins" type="text" value = "default" onkeypress="handle()">
+				<br>
+				Text Shadow Size Y:<br>
+				<input id = "sssy" class ="spins" type="text" value = "default" onkeypress="handle()">
+				<br>
+				
+			</div>
+			
+			
+			<div id="tab6" class="tab">
+				
+				Text Box Color:<br>
+				<input id = "fbc" type="text" value = "default" onkeypress="handle()" class ="color {hash:true,adjust:false,pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black', onImmediateChange:handle }" onchange ="handle()">
+				<br>
+				Text Box Size:<br>
+				<input id = "fbp" class ="spins" type="text" value = "default" onkeypress="handle()">
+				<br>
+				Text Box Border Size:<br>
+				<input id = "fbos" class ="spins" type="text" value = "default" onkeypress="handle()">
+				<br>
+				Text Box Border Color:<br>
+				<input id = "fboc" type="text" value = "default" onkeypress="handle()" class ="color {hash:true,adjust:false,pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black', onImmediateChange:handle }" onchange ="handle()"> 
+				<br>
+				Text Box Border Style:<br>
+				<select id ="fbs" onchange ="handle()">
+				  <option value="none">None</option>
+				  <option value="hidden">Hidden</option>
+				  <option value="dotted">Dotted</option>
+				  <option value="dashed">Dashed</option>
+				  <option value="solid">Solid</option>
+				  <option value="double">Double</option>
+				  <option value="groove">Groove</option>
+				  <option value="ridge">Ridge</option>
+				  <option value="inset">Inset</option>
+				  <option value="outset">Outset</option>
+				  <option value="initial">Initial</option>
+				  <option value="inherit">Inherit</option>
+				</select><br>
+				
+				Letter Background Color:<br>
+				<input id = "ifbc" type="text" value = "default" onkeypress="handle()" class ="color {hash:true,adjust:false,pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black', onImmediateChange:handle }" onchange ="handle()">
+				<br>
+				Letter Background Size:<br>
+				<input id = "ifbp" class ="spins" type="text" value = "default" onkeypress="handle()">
+				<br>
+				Letter Background Border Size:<br>
+				<input id = "ifbos" class ="spins" type="text" value = "default" onkeypress="handle()">
+				<br>
+				Letter Background Border Color:<br>
+				<input id = "ifboc" type="text" value = "default" onkeypress="handle()" class ="color {hash:true,adjust:false,pickerFaceColor:'transparent',pickerFace:3,pickerBorder:0,pickerInsetColor:'black', onImmediateChange:handle }" onchange ="handle()"> 
+				<br>
+				Letter Background Border Style:<br>
+				<select id ="ifbs" onchange ="handle()">
+				  <option value="none">None</option>
+				  <option value="hidden">Hidden</option>
+				  <option value="dotted">Dotted</option>
+				  <option value="dashed">Dashed</option>
+				  <option value="solid">Solid</option>
+				  <option value="double">Double</option>
+				  <option value="groove">Groove</option>
+				  <option value="ridge">Ridge</option>
+				  <option value="inset">Inset</option>
+				  <option value="outset">Outset</option>
+				  <option value="initial">Initial</option>
+				  <option value="inherit">Inherit</option>
+				</select><br>
+				Text Rotation Amount:<br>
+				<input id = "fra" class ="spins" type="text" value = "default" onkeypress="handle()">
+				<br>
+				Text Radius Size:<br>
+				<input id = "frad" class ="spins" type="text" value = "default" onkeypress="handle()">
+				<br>
+				Circle position start:<br>
+				<input id = "frast" class ="spins" type="text" value = "default" onkeypress="handle()">
+				<br>
+				
+			</div>
+		</div>
+	
+	
+		</div>
+	
+	
+	</div>
+
+	
+	
+	<audio id = "audioControl" controls="controls">  
+   <source src="audio/alert2.mp3" />  
+	</audio> 
+		
+	</body>
+	
+	
+
+	
+	<script>
+	
+	
+	jQuery(document).ready(function() {
+    jQuery('.tabs .tab-links a').on('click', function(e)  {
+        var currentAttrValue = jQuery(this).attr('href');
+ 
+        // Show/Hide Tabs
+        jQuery('.tabs ' + currentAttrValue).show().siblings().hide();
+ 
+        // Change/remove current tab to active
+        jQuery(this).parent('li').addClass('active').siblings().removeClass('active');
+ 
+        e.preventDefault();
+    });
+	});
+	
+	//This is just so it's easier to change values without having to press the button each time
+    function handle(e){
+       // if(e.keyCode === 13){
+          //  alert("Enter was pressed was presses");
+       // }
+	confirmTestChanges();
+        //return false;
+    }
+	
+	//For volume/opacity spinners
+	$(".spins2").spinner({
+    min : 0.0,
+    max : 1.0,
+	step: 0.01,
+	spin: function( event, ui ) {
+       confirmTestChanges();
+    },
+	stop: function( event, ui ) {
+       confirmTestChanges();
+    }
+	
+	});
+	
+
+	//For the increment/decrement spinners
+	$(".spins").spinner({
+    min : 0,
+    max : 100000,
+	spin: function( event, ui ) {
+       confirmTestChanges();
+    },
+	stop: function( event, ui ) {
+       confirmTestChanges();
+    }
+	
+	});
+	
+		//Sets up auto complete for the tts languages
+	$( ".autocompleteLanguage" ).autocomplete({
+	source: ["(Afrikaans) af","(Albanian) sq","(Amharic) am","(Arabic (Algeria)) ar-DZ","(Arabic (Bahrain)) ar-BH","(Arabic (Egypt)) ar-EG","(Arabic (Iraq)) ar-IQ","(Arabic (Jordan)) ar-JO","(Arabic (Kuwait)) ar-KW","(Arabic (Lebanon)) ar-LB","(Arabic (Lybia)) ar-LY","(Arabic (Morocco)) ar-MA","(Arabic (Oman)) ar-OM","(Arabic (Qatar)) ar-QA","(Arabic (Saudi Arabia)) ar-SA","(Arabic (Tunisia)) ar-TN","(Arabic (UAE)) ae-AE","(Arabic (Yemen)) ar-YE","(Arabic) ar","(Armenian) hy","(Azerbaijani) az","(Basque) eu","(Belarusian) be","(Bengali) bn","(Bihari) bh","(Bosnian) bs","(Breton) br","(Bulgarian) bg","(Cambodian) km","(Catalan) ca","(Chinese (Simplified)) zh-CN","(Chinese (Traditional)) zh-TW","(Corsican) co","(Croatian) hr","(Czech) cs","(Danish) da","(Dutch) nl","(Dutch) nl-NL","(English (Australia)) en-AU","(English (Canada)) en-CA","(English (India)) en-IN","(English (New Zealand)) en-NZ","(English (South Africa)) en-ZA","(English (UK)) en-GB","(English (US)) en-US","(English) en","(Esperanto) eo","(Estonian) et","(Faroese) fo","(Filipino) tl","(Finnish) fi","(French) fr","(French) fr-FR","(Frisian) fy","(Galician) gl","(Georgian) ka","(German) de","(German) de-DE","(Greek) el","(Guarani) gn","(Gujarati) gu","(Hacker) xx-hacker","(Hausa) ha","(Hebrew) he","(Hebrew) iw","(Hindi) hi","(Hungarian) hu","(Icelandic) is","(Indonesian) id","(Interlingua) ia","(Irish) ga","(Italian) it","(Italian) it-IT","(Japanese) ja","(Javanese) jw","(Kannada) kn","(Kazakh) kk","(Kinyarwanda) rw","(Kirundi) rn","(Klingon) xx-klingon","(Korean) ko","(Kurdish) ku","(Kyrgyz) ky","(Laothian) lo","(Latin) la","(Latvian) lv","(Lingala) ln","(Lithuanian) lt","(Macedonian) mk","(Malagasy) mg","(Malay) ms","(Malayalam) ml","(Malaysian) ms-MY","(Maltese) mt","(Maori) mi","(Marathi) mr","(Moldavian) mo","(Mongolian) mn","(Montenegrin) sr-ME","(Nepali) ne","(Norwegian (Nynorsk)) nn","(Norwegian) no","(Norwegian) no-NO","(Occitan) oc","(Oriya) or","(Oromo) om","(Pashto) ps","(Persian) fa","(Pig Latin) xx-piglatin","(Pirate) xx-pirate","(Polish) pl","(Portuguese (Brazil)) pt-BR","(Portuguese (Portugal)) pt-PT","(Punjabi) pa","(Quechua) qu","(Romanian) ro","(Romanian) ro-RO","(Romansh) rm","(Russian) ru","(ScotsGaelic) gd","(Serbian) sr","(Serbian) sr-SP","(Serbo-Croatian) sh","(Sesotho) st","(Shona) sn","(Simplified zh-HK","(Sindhi) sd","(Sinhalese) si","(Slovak) sk","(Slovenian) sl","(Somali) so","(Spanish (Argentina)) es-AR","(Spanish (Bolivia)) es-BO","(Spanish (Chile)) es-CL","(Spanish (Colombia)) es-CO","(Spanish (Costa es-CR","(Spanish (Dominican es-DO","(Spanish (Ecuador)) es-EC","(Spanish (El Salvador)) es-SV","(Spanish (Guatemala)) es-GT","(Spanish (Honduras)) es-HN","(Spanish (Mexico)) es-MX","(Spanish (Nicaragua)) es-NI","(Spanish (Panama)) es-PA","(Spanish (Paraguay)) es-PY","(Spanish (Peru)) es-PE","(Spanish (Puerto Rico) es-PR","(Spanish (Spain)) es-ES","(Spanish (Uruguay)) es-UY","(Spanish (US)) es-US","(Spanish (Venezuela)) es-VE","(Spanish) es","(Sundanese) su","(Swahili) sw","(Swedish) sv","(Swedish) sv-SE","(Tajik) tg","(Tamil) ta","(Tatar) tt","(Telugu) te","(Thai) th","(Tigrinya) ti","(Tonga) to","(Turkish) tr","(Turkmen) tk","(Twi) tw","(Uighur) ug","(Ukrainian) uk","(Urdu) ur","(Uzbek) uz","(Vietnamese) vi","(Welsh) cy","(Xhosa) xh","(Yiddish) yi","(Yoruba) yo","(YueTraditional Hong Kong)) zh-yue","(Zulu) zu"]
+	});
+	
+	//Sets up auto complete for the font types
+	$( ".autocompleteFont" ).autocomplete({
+	source: [ "p.Arial", "p.Courier New", "p.Times New Roman", "p.Arial Black", "p.Comic Sans MS", "p.Impact", "p.Georgia", "p.Trebuchet MS", "p.Verdana", "p.Webdings","p.customFont"]
+	});
+	
+	//Sets up the file reader
+	$("#fileSelector").change(function() {
+		// will log a FileList object, view gifs below
+	
+		var fileA = this.files.length;
+		
+		if (fileA>0){
+			var reader = new FileReader();
+		
+			var outputString = "";
+			for (x=0;x<fileA;x++){
+			
+				var fileName = this.files[x].name;
+				var fileType = fileName.split('.')[1];
+				fileType.toLowerCase();
+				
+				outputString +="\n" + fileType;
+				
+				switch (fileType){
+				case 'jpg':
+				case 'png':
+				case 'gif':
+				case 'jpeg':
+				case 'webm':
+				case 'mp4':
+				case 'bmp':
+				case 'svg':
+				case 'bmp':
+					if (folderName == "default"){
+						imageList.push(imageFolder + fileName);
+					}else{
+						imageList.push(folderName + fileName);
+					}
+					
+					break;
+				case 'mp3':
+				case 'ogg':
+				case 'wav':
+					if (folderName == "default"){
+						
+						audioList.push(audioFolder + fileName);
+					}else{
+						audioList.push(folderName + fileName);
+					}
+					break;
+
+				
+				}
+			}
+		}
+	
+	
+	});
+
+	
+	</script>
+
+
+</html>
